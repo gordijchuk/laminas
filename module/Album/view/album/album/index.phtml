@@ -1,0 +1,14 @@
+<h1>Albums</h1>
+
+<table border="1">
+    <tr>
+        <th>Artist</th>
+        <th>Title</th>
+    </tr>
+    <?php foreach ($this->albums as $album): ?>
+        <tr>
+            <td><?= $this->escapeHtml($album->getArtist()) ?></td>
+            <td><?= $this->escapeHtml($album->getTitle()) ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
