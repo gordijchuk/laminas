@@ -1,0 +1,34 @@
+<h1><?= $this->escapeHtml($book->title) ?></h1>
+
+<?php if ($book->publisher): ?>
+    <p><strong>Publisher:</strong> <?= $this->escapeHtml($book->publisher->name) ?></p>
+<?php endif; ?>
+
+<?php if (!empty($book->authors)): ?>
+    <p><strong>Authors:</strong>
+        <ul>
+            <?php foreach ($book->authors as $author): ?>
+                <li><?= $this->escapeHtml($author->first_name . ' ' . $author->last_name) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </p>
+<?php endif; ?>
+
+<?php if (!empty($book->genres)): ?>
+    <p><strong>Genres:</strong>
+        <ul>
+            <?php foreach ($book->genres as $genre): ?>
+                <li><?= $this->escapeHtml($genre->name) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </p>
+<?php endif; ?>
+
+<?php if ($book->details): ?>
+    <p><strong>Details:</strong></p>
+    <ul>
+        <li>Pages: <?= $this->escapeHtml($book->details->number_of_pages) ?></li>
+    </ul>
+<?php endif; ?>
+
+<p><a href="<?= $this->url('books') ?>">Back to list</a></p>

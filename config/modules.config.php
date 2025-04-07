@@ -28,4 +28,5 @@ return [
     'DoctrineORMModule',
     'Application',
     'Album',
+    'Book',
 ];

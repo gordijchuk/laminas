@@ -1,0 +1,8 @@
+<h2>Add Test Book</h2>
+
+<form method="post" action="<?= $this->url('books', ['action' => 'add']) ?>">
+    <p>This will add a test book with dummy data.</p>
+    <button type="submit">Create Book</button>
+</form>
+
+<p><a href="<?= $this->url('books') ?>">Back to book list</a></p>

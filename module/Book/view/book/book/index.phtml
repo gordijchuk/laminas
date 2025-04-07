@@ -1,0 +1,23 @@
+<h1>Books</h1>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Publisher</th>
+        <th>Pages</th>
+        <th>Authors</th>
+    </tr>
+    <?php foreach ($this->books as $book) : ?>
+        <tr>
+            <td><a href="<?= $this->url('books', ['action' => 'view', 'id' => $book->id]) ?>"><?= $this->escapeHtml($book->title) ?></a></td>
+            <td><?= $this->escapeHtml($book->publisher->name) ?></td>
+            <td><?= $this->escapeHtml($book->details->number_of_pages) ?></td>
+            <td>
+                <?php foreach ($book->authors as $author) : ?>
+                    <?= $this->escapeHtml($author->first_name) ?>
+                    <?= $this->escapeHtml($author->last_name) ?>
+                <?php endforeach; ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
