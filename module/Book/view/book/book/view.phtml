@@ -31,4 +31,12 @@
     </ul>
 <?php endif; ?>
 
+<?php if ($book->created_at): ?>
+    <p><strong>Created at:</strong></p>
+    <ul>
+        <li><?= $this->escapeHtml($book->created_at->format('d.m.Y H:i:s')) ?></li>
+    </ul>
+<?php endif; ?>
+
 <p><a href="<?= $this->url('books') ?>">Back to list</a></p>
+<p><a href="<?= $this->url('books', ['action' => 'delete', 'id' => $book->id]) ?>">Delete Book</a></p>

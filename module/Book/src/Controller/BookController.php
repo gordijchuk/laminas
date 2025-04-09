@@ -30,7 +30,7 @@ class BookController extends AbstractActionController
         $book = $this->bookService->getBookById($id);
 
         if (!$book) {
-            return $this->notFoundAction();
+            return $this->redirect()->toRoute('books');
         }
 
         return new ViewModel([
@@ -56,5 +56,14 @@ class BookController extends AbstractActionController
 
     public function deleteAction()
     {
+        $id = (int) $this->params()->fromRoute('id');
+
+        if ($id <= 0) {
+            return $this->redirect()->toRoute('books');
+        }
+
+        $this->bookService->deleteBookById($id);
+
+        return $this->redirect()->toRoute('books');
     }
 }

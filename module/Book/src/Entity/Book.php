@@ -2,7 +2,9 @@
 
 namespace Book\Entity;
 
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Book\Attribute\AutoCreatedDate;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -25,6 +27,10 @@ class Book
     #[ORM\OneToOne(targetEntity: BookDetails::class, inversedBy: 'book')]
     #[ORM\JoinColumn(name: 'details_id', referencedColumnName: 'id')]
     public BookDetails $details;
+
+    #[ORM\Column(type: 'datetime_immutable')]
+    #[AutoCreatedDate]
+    public ?DateTimeImmutable $created_at = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books')]
     #[ORM\JoinTable(name: 'authors_books')]
