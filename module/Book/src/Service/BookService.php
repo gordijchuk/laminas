@@ -76,6 +76,13 @@ class BookService
         return $book;
     }
 
+    public function updateBookFromApi(Book $book, array $data)
+    {
+        $book->title = $data['title'];
+
+        $this->entityManager->flush();
+    }
+
     public function deleteBookById(int $bookId)
     {
         $book = $this->entityManager->getRepository(Book::class)->find($bookId);

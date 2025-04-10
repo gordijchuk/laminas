@@ -60,6 +60,19 @@ class BookApiController extends AbstractRestfulController
         return new JsonModel(['message' => 'Book deleted']);
     }
 
+    public function patch($id, $data)
+    {
+        $book = $this->bookService->getBookById($id);
+
+        if (!$book) {
+            return new JsonModel(['message' => 'Book not found']);
+        }
+
+        $this->bookService->updateBookFromApi($book, $data);
+
+        return new JsonModel(['message' => 'Book updated', 'id' => $book->id]);
+    }
+
     public function searchAction()
     {
         $books = $this->bookService->searchBooks(
